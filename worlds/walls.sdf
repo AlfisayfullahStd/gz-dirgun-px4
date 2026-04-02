@@ -1,0 +1,577 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<sdf version="1.9">
+  <world name="walls">
+    <physics type="ode">
+      <max_step_size>0.004</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>250</real_time_update_rate>
+    </physics>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type="adiabatic"/>
+    <scene>
+      <grid>false</grid>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>true</shadows>
+    </scene>
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>1 1</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.8 0.8 0.8 1</specular>
+          </material>
+        </visual>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>0 0 0 0 -0 0</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <light name="sunUTC" type="directional">
+      <pose>0 0 500 0 -0 0</pose>
+      <cast_shadows>true</cast_shadows>
+      <intensity>1</intensity>
+      <direction>0.001 0.625 -0.78</direction>
+      <diffuse>0.904 0.904 0.904 1</diffuse>
+      <specular>0.271 0.271 0.271 1</specular>
+      <attenuation>
+        <range>2000</range>
+        <linear>0</linear>
+        <constant>1</constant>
+        <quadratic>0</quadratic>
+      </attenuation>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <world_frame_orientation>ENU</world_frame_orientation>
+      <latitude_deg>-0.8977332822686178</latitude_deg>
+      <longitude_deg>100.34701620539406</longitude_deg>
+      <elevation>0</elevation>
+    </spherical_coordinates>
+
+    <model name="field_arena_assembly">
+      <static>true</static>
+      <pose>0 0 0 0 0 0</pose>
+
+      <!-- Main field base -->
+      <link name="main_field_link">
+        <pose>0 0 0.01 0 0 0</pose>
+        <collision name="col">
+          <geometry>
+            <box>
+              <size>100 80 0.02</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="vis">
+          <geometry>
+            <box>
+              <size>100 80 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.24 0.40 0.18 1</ambient>
+            <diffuse>0.27 0.44 0.20 1</diffuse>
+            <specular>0.04 0.04 0.04 1</specular>
+          </material>
+        </visual>
+      </link>
+
+      <!-- DP Pads (corners) -->
+      <link name="dp1_pad_link">
+        <pose>-49 39 0.03 0 0 0</pose>
+        <collision name="col">
+          <geometry>
+            <box>
+              <size>2 2 0.01</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="vis">
+          <geometry>
+            <box>
+              <size>2 2 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.45 0 1</ambient>
+            <diffuse>1 0.45 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <link name="dp2_pad_link">
+        <pose>49 39 0.03 0 0 0</pose>
+        <collision name="col">
+          <geometry>
+            <box>
+              <size>2 2 0.01</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="vis">
+          <geometry>
+            <box>
+              <size>2 2 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.45 0 1</ambient>
+            <diffuse>1 0.45 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <link name="dp3_pad_link">
+        <pose>49 -39 0.03 0 0 0</pose>
+        <collision name="col">
+          <geometry>
+            <box>
+              <size>2 2 0.01</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="vis">
+          <geometry>
+            <box>
+              <size>2 2 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.45 0 1</ambient>
+            <diffuse>1 0.45 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <link name="dp4_pad_link">
+        <pose>-49 -39 0.03 0 0 0</pose>
+        <collision name="col">
+          <geometry>
+            <box>
+              <size>2 2 0.01</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="vis">
+          <geometry>
+            <box>
+              <size>2 2 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.45 0 1</ambient>
+            <diffuse>1 0.45 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <!-- Center pads -->
+      <link name="dp9_pad_red_link">
+        <pose>0.6 0 0.03 0 0 0</pose>
+        <collision name="col">
+          <geometry>
+            <box>
+              <size>1 1 0.01</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="vis">
+          <geometry>
+            <box>
+              <size>1.2 2 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <link name="dp9_pad_blue_link">
+        <pose>-0.6 0 0.03 0 0 0</pose>
+        <collision name="col">
+          <geometry>
+            <box>
+              <size>1 1 0.01</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="vis">
+          <geometry>
+            <box>
+              <size>1.2 2 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0.2 0.9 1</ambient>
+            <diffuse>0 0.2 0.9 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <!-- Indoor start markers -->
+      <link name="marker_indoor_start_L_link">
+        <pose>-1.25 39 0.02 0 0 0</pose>
+        <visual name="v">
+          <geometry>
+            <box>
+              <size>0.60 0.60 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0.4 1 1</ambient>
+            <diffuse>0 0.4 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <link name="marker_indoor_start_R_link">
+        <pose>1.25 39 0.02 0 0 0</pose>
+        <visual name="v">
+          <geometry>
+            <box>
+              <size>0.60 0.60 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.1 0.1 1</ambient>
+            <diffuse>1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <!-- Fixed Joints connecting all links to main field -->
+      <joint name="dp1_pad_joint" type="fixed">
+        <parent>main_field_link</parent>
+        <child>dp1_pad_link</child>
+      </joint>
+
+      <joint name="dp2_pad_joint" type="fixed">
+        <parent>main_field_link</parent>
+        <child>dp2_pad_link</child>
+      </joint>
+
+      <joint name="dp3_pad_joint" type="fixed">
+        <parent>main_field_link</parent>
+        <child>dp3_pad_link</child>
+      </joint>
+
+      <joint name="dp4_pad_joint" type="fixed">
+        <parent>main_field_link</parent>
+        <child>dp4_pad_link</child>
+      </joint>
+
+      <joint name="dp9_pad_red_joint" type="fixed">
+        <parent>main_field_link</parent>
+        <child>dp9_pad_red_link</child>
+      </joint>
+
+      <joint name="dp9_pad_blue_joint" type="fixed">
+        <parent>main_field_link</parent>
+        <child>dp9_pad_blue_link</child>
+      </joint>
+
+      <joint name="marker_indoor_start_L_joint" type="fixed">
+        <parent>main_field_link</parent>
+        <child>marker_indoor_start_L_link</child>
+      </joint>
+
+      <joint name="marker_indoor_start_R_joint" type="fixed">
+        <parent>main_field_link</parent>
+        <child>marker_indoor_start_R_link</child>
+      </joint>
+
+      <!-- Outdoor markers -->
+      <link name="marker_indoor_start_out_L_link">
+        <pose>-3.80 39 0.02 0 0 0</pose>
+        <visual name="v">
+          <geometry>
+            <box>
+              <size>0.60 0.60 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.85 0 1</ambient>
+            <diffuse>1 0.85 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <link name="marker_indoor_start_out_R_link">
+        <pose>3.80 39 0.02 0 0 0</pose>
+        <visual name="v">
+          <geometry>
+            <box>
+              <size>0.60 0.60 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.85 0 1</ambient>
+            <diffuse>1 0.85 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <!-- Indoor Arena Walls -->
+      <link name="wall_top_back">
+        <pose>0 30 1.0 0 0 3.141593</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10.1 0.1 2.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10.1 0.1 2.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <link name="wall_inner_left">
+        <pose>3.75 32.5 1.0 0 0 3.141593</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>2.6 0.1 2.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>2.6 0.1 2.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <link name="wall_inner_right">
+        <pose>-3.75 32.5 1.0 0 0 3.141593</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>2.6 0.1 2.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>2.6 0.1 2.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <link name="wall_left_long">
+        <pose>2.5 36.225 1.0 0 0 3.141593</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.1 7.45 2.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.1 7.45 2.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <link name="wall_right_long">
+        <pose>-2.5 36.225 1.0 0 0 3.141593</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.1 7.45 2.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.1 7.45 2.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <link name="wall_center_divider">
+        <pose>0 36.225 1.0 0 0 3.141593</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.1 7.45 2.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.1 7.45 2.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <joint name="marker_indoor_start_out_L_joint" type="fixed">
+        <parent>main_field_link</parent>
+        <child>marker_indoor_start_out_L_link</child>
+      </joint>
+
+      <joint name="marker_indoor_start_out_R_joint" type="fixed">
+        <parent>main_field_link</parent>
+        <child>marker_indoor_start_out_R_link</child>
+      </joint>
+
+      <joint name="wall_top_back_joint" type="fixed">
+        <parent>main_field_link</parent>
+        <child>wall_top_back</child>
+      </joint>
+
+      <joint name="wall_inner_left_joint" type="fixed">
+        <parent>main_field_link</parent>
+        <child>wall_inner_left</child>
+      </joint>
+
+      <joint name="wall_inner_right_joint" type="fixed">
+        <parent>main_field_link</parent>
+        <child>wall_inner_right</child>
+      </joint>
+
+      <joint name="wall_left_long_joint" type="fixed">
+        <parent>main_field_link</parent>
+        <child>wall_left_long</child>
+      </joint>
+
+      <joint name="wall_right_long_joint" type="fixed">
+        <parent>main_field_link</parent>
+        <child>wall_right_long</child>
+      </joint>
+
+      <joint name="wall_center_divider_joint" type="fixed">
+        <parent>main_field_link</parent>
+        <child>wall_center_divider</child>
+      </joint>
+    </model>
+    <model name="my_robot">
+      <!-- Links -->
+      <link name="INDOOR_EXIT_GATE__IEG__001">
+        <inertial>
+          <mass value="5" />
+          <inertia ixx="3.211629" ixy="-0.046691" ixz="0" iyy="1.548178" iyz="0" izz="1.979082" />
+        </inertial>
+        <visual>
+          <origin xyz="-0.273741 1.474217 0.031367" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="meshes/INDOOR_EXIT_GATE__IEG__001_visual.obj" />
+          </geometry>
+        </visual>
+        <collision>
+          <origin xyz="0.27 1.15 0" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="meshes/INDOOR_EXIT_GATE__IEG__001_collision.stl" />
+          </geometry>
+        </collision>
+      </link>
+      <link name="base_link">
+        <inertial>
+          <mass value="1" />
+          <inertia ixx="2.667392" ixy="0" ixz="0" iyy="2.667392" iyz="0" izz="5.331011" />
+        </inertial>
+        <visual>
+          <geometry>
+            <box size="5.655622 5.655622 0.150441" />
+          </geometry>
+        </visual>
+        <collision>
+          <origin xyz="-0.301951 -0.101186 0.107246" rpy="0 0 0" />
+          <geometry>
+            <box size="5.655622 5.655622 0.150441" />
+          </geometry>
+        </collision>
+      </link>
+      <!-- Joints -->
+      <joint name="INDOOR_EXIT_GATE__IEG__001_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="1.570796 0 0" />
+        <parent link="base_link" />
+        <child link="INDOOR_EXIT_GATE__IEG__001" />
+      </joint>
+    </model>
+  </world>
+</sdf>
