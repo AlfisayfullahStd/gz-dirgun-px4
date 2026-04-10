@@ -2,7 +2,7 @@
 <sdf version='1.9'
   xmlns:gz='http://gazebosim.org/schemas/sdf/1.9'>
   <model name='x500_base'>
-    <pose>-1.25 39 .24 0 0 0</pose>
+    <pose>-1.25 39 .24 0 0 -1.5708</pose>
     <self_collide>false</self_collide>
     <static>false</static>
     <link name="base_link">
